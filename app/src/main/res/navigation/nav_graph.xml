@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstOnBoardingFragment">
+
+    <fragment
+        android:id="@+id/firstOnBoardingFragment"
+        android:name="com.theviciousgames.refreshratechecker.ui.welcome.view.FirstOnBoardingFragment"
+        android:label="FirstOnBoardingFragment" >
+        <action
+            android:id="@+id/action_firstOnBoardingFragment_to_secondOnBoardingFragment"
+            app:destination="@id/secondOnBoardingFragment" />
+        <action
+            android:id="@+id/action_firstOnBoardingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.theviciousgames.refreshratechecker.ui.main.view.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdOnBoardingFragment"
+        android:name="com.theviciousgames.refreshratechecker.ui.welcome.view.ThirdOnBoardingFragment"
+        android:label="ThirdOnBoardingFragment" >
+        <action
+            android:id="@+id/action_thirdOnBoardingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondOnBoardingFragment"
+        android:name="com.theviciousgames.refreshratechecker.ui.welcome.view.SecondOnBoardingFragment"
+        android:label="SecondOnBoardingFragment" >
+        <action
+            android:id="@+id/action_secondOnBoardingFragment_to_thirdOnBoardingFragment"
+            app:destination="@id/thirdOnBoardingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.theviciousgames.refreshratechecker.ui.settings.view.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>

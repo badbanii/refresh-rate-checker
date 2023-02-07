@@ -7,12 +7,14 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.theviciousgames.refreshratechecker.databinding.FragmentMainBinding
+import com.theviciousgames.refreshratechecker.databinding.FragmentOnboardingBinding
+import com.theviciousgames.refreshratechecker.ui.main.viewmodel.MainViewModel
 import com.theviciousgames.refreshratechecker.ui.welcome.viewmodel.OnBoardingViewModel
 
 
 class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fragment_main) {
     private var _binding: FragmentMainBinding? = null
-    private val viewModel: OnBoardingViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
     private val binding: FragmentMainBinding
         get() = _binding!!
 
@@ -34,6 +36,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentMainBinding.bind(view)
         updateUi()
     }
 }
