@@ -33,7 +33,7 @@ class FirstOnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
         with(binding)
         {
             animationView.cancelAnimation()
-            textviewTitle.text = "Change your DPI!"
+            textviewTitle.text = "Check your refresh!"
             textviewDescription.text =
                 "You either want to be a great gamer with a better aim or you simply want a zoomed-out screen and you came to the right place!\n Lets us know in a review what's your opinion!"
         }
