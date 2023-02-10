@@ -31,6 +31,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
     private val viewModel: MainViewModel by viewModels()
     private lateinit var modeAdapter: ModeAdapter
     private var dialog: InfoSheet = InfoSheet()
+    private var currentRefreshRate=0
     private val binding: FragmentMainBinding
         get() = _binding!!
 
@@ -61,6 +62,12 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         setupRecyclerView()
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun refresh()
+    {
+        binding.textviewRefreshRate.text=getRefreshRate().toString()
+    }
+
     private fun buttonFunctions()
     {
         with(binding){
@@ -75,6 +82,9 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
             }
             buttonRefreshRateInfo.setOnClickListener {
                 showDialogDefinition()
+            }
+            buttonRefresh.setOnClickListener {
+                refresh()
             }
         }
     }
