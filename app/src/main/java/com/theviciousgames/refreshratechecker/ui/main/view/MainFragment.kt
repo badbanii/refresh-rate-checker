@@ -3,12 +3,15 @@ package com.theviciousgames.refreshratechecker.ui.main.view
 import android.R
 import android.media.AudioAttributes
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
+import android.view.Display
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -43,6 +46,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMainBinding.bind(view)
@@ -50,6 +54,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         setupRecyclerView()
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun setupRecyclerView()
     {
         modeAdapter= ModeAdapter()
@@ -60,6 +65,15 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
                 layoutManager=LinearLayoutManager(activity)
             }
         }
+
+
+        modeAdapter.differ.submitList(getAvailableRefreshRatesModes().distinctBy { it.refreshRate }.sortedBy { it.refreshRate })
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun getAvailableRefreshRatesModes(): Array<Display.Mode>
+    {
+       return viewModel.getAvailableRefreshRatesModes(requireActivity())
     }
     ///adb shell dumpsys display | grep -i "displaymoderecord" | grep -i "fps"
 }

@@ -19,7 +19,7 @@ class ModeAdapter():RecyclerView.Adapter<ModeAdapter.ModeViewHolder>() {
         {
             with(binding)
             {
-                textviewRefreshRateMode.text="Mode $position: ${mode.refreshRate}"
+                textviewRefreshRateMode.text="Mode $position: ${mode.refreshRate.toInt()}hz"
             }
         }
     }
