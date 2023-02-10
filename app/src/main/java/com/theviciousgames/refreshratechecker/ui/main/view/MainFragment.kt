@@ -114,7 +114,6 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
     private fun getRefreshRate(): Int{
         return viewModel.getRefreshRate(requireActivity())
     }
-    ///adb shell dumpsys display | grep -i "displaymoderecord" | grep -i "fps"
 
     private fun navigateTo(destination: Destination)
     {
