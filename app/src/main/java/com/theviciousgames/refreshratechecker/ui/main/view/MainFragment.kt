@@ -35,6 +35,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         _binding = null
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun updateUi() {
         with(binding)
         {
@@ -77,6 +78,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
        return viewModel.getAvailableRefreshRatesModes(requireActivity())
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun getRefreshRate(): Int{
         return viewModel.getRefreshRate(requireActivity())
     }
