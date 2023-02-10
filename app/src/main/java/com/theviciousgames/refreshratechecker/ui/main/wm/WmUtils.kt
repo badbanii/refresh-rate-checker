@@ -11,6 +11,7 @@ import kotlin.math.sqrt
 
 class WmUtils {
     private lateinit var modes:Array<Display.Mode>
+    private var refreshRate=0
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun getAvailableRefreshRatesModes(activity: Activity):Array<Display.Mode>{
@@ -23,4 +24,12 @@ class WmUtils {
         return modes
     }
 
+    fun getRefreshRate(activity: Activity):Int{
+        refreshRate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            activity.display!!.refreshRate.toInt()
+        } else {
+            activity.windowManager.defaultDisplay.refreshRate.toInt()
+        }
+        return refreshRate
+    }
 }

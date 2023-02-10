@@ -38,6 +38,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
     private fun updateUi() {
         with(binding)
         {
+            textviewRefreshRate.text="${getRefreshRate()}"
             var uri =
                 Uri.parse("android.resource://" + "com.theviciousgames.refreshratechecker" + "/" + com.theviciousgames.refreshratechecker.R.raw.test)
             videoViewOne.setVideoURI(uri)
@@ -74,6 +75,10 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
     private fun getAvailableRefreshRatesModes(): Array<Display.Mode>
     {
        return viewModel.getAvailableRefreshRatesModes(requireActivity())
+    }
+
+    private fun getRefreshRate(): Int{
+        return viewModel.getRefreshRate(requireActivity())
     }
     ///adb shell dumpsys display | grep -i "displaymoderecord" | grep -i "fps"
 }

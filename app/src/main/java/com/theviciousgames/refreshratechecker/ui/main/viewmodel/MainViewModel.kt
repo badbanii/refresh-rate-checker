@@ -16,4 +16,10 @@ class MainViewModel():ViewModel() {
         return wmUtils.getAvailableRefreshRatesModes(activity)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun getRefreshRate(activity: Activity):Int
+    {
+        return wmUtils.getRefreshRate(activity)
+    }
+
 }
