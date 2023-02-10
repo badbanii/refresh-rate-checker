@@ -5,5 +5,7 @@ enum class Destination {
     SecondOnBoarding(),
     ThirdOnBoarding(),
     Main(),
-    Settings()
+    Settings(),
+    Menu(),
+    Back()
 }

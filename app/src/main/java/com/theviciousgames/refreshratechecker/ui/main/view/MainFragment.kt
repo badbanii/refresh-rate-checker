@@ -16,9 +16,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.maxkeppeler.sheets.core.SheetStyle
+import com.maxkeppeler.sheets.info.InfoSheet
 import com.theviciousgames.refreshratechecker.databinding.FragmentMainBinding
 import com.theviciousgames.refreshratechecker.databinding.FragmentOnboardingBinding
 import com.theviciousgames.refreshratechecker.ui.main.viewmodel.MainViewModel
+import com.theviciousgames.refreshratechecker.ui.utils.Destination
 import com.theviciousgames.refreshratechecker.ui.welcome.viewmodel.OnBoardingViewModel
 import kotlin.concurrent.fixedRateTimer
 
@@ -27,6 +30,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
     private var _binding: FragmentMainBinding? = null
     private val viewModel: MainViewModel by viewModels()
     private lateinit var modeAdapter: ModeAdapter
+    private var dialog: InfoSheet = InfoSheet()
     private val binding: FragmentMainBinding
         get() = _binding!!
 
@@ -52,8 +56,27 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMainBinding.bind(view)
+        buttonFunctions()
         updateUi()
         setupRecyclerView()
+    }
+
+    private fun buttonFunctions()
+    {
+        with(binding){
+            buttonMenu.setOnClickListener {
+                navigateTo(Destination.Menu)
+            }
+            buttonDemoInfo.setOnClickListener {
+                showDialogDemo()
+            }
+            buttonModesInfo.setOnClickListener {
+                showDialogModes()
+            }
+            buttonRefreshRateInfo.setOnClickListener {
+                showDialogDefinition()
+            }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -67,8 +90,6 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
                 layoutManager=LinearLayoutManager(activity)
             }
         }
-
-
         modeAdapter.differ.submitList(getAvailableRefreshRatesModes().distinctBy { it.refreshRate }.sortedBy { it.refreshRate })
     }
 
@@ -83,4 +104,61 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         return viewModel.getRefreshRate(requireActivity())
     }
     ///adb shell dumpsys display | grep -i "displaymoderecord" | grep -i "fps"
+
+    private fun navigateTo(destination: Destination)
+    {
+        when(destination)
+        {
+            Destination.Menu->
+            {
+                if (findNavController().currentDestination?.id == com.theviciousgames.refreshratechecker.R.id.mainFragment)
+                {
+                    findNavController().navigate(com.theviciousgames.refreshratechecker.R.id.action_mainFragment_to_menuFragment)
+                }
+            }
+            Destination.Settings->{
+                if (findNavController().currentDestination?.id == com.theviciousgames.refreshratechecker.R.id.mainFragment)
+                {
+                    findNavController().navigate(com.theviciousgames.refreshratechecker.R.id.action_mainFragment_to_settingsFragment)
+                }
+            }
+            else -> {}
+        }
+    }
+
+    private fun showDialogDemo() {
+        dialog = InfoSheet().build(requireActivity()) {
+            title("INFO")
+            displayNegativeButton(false)
+            style(SheetStyle.DIALOG)
+            content("This is a visual representation of your device refresh rate.")
+            onPositive("Close") {
+            }
+        }
+        dialog.show()
+    }
+
+    private fun showDialogModes() {
+        dialog = InfoSheet().build(requireActivity()) {
+            title("INFO")
+            displayNegativeButton(false)
+            style(SheetStyle.DIALOG)
+            content("These are all the available display modes on your device (available refresh rate).")
+            onPositive("Close") {
+            }
+        }
+        dialog.show()
+    }
+
+    private fun showDialogDefinition() {
+        dialog = InfoSheet().build(requireActivity()) {
+            title("INFO")
+            displayNegativeButton(false)
+            style(SheetStyle.DIALOG)
+            content("Short definition of what refresh rate is.")
+            onPositive("Close") {
+            }
+        }
+        dialog.show()
+    }
 }
