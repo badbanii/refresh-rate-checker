@@ -45,6 +45,6 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMainBinding.bind(view)
         updateUi()
-
     }
+    ///adb shell dumpsys display | grep -i "displaymoderecord" | grep -i "fps"
 }

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView  xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+
     android:layout_width="match_parent"
     android:background="@color/black"
     android:layout_height="match_parent">
@@ -84,55 +88,158 @@
         android:backgroundTint="#F9D16B"
         />
 
-    <TextView
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/textview_title_one"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_demo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Demo"
-        android:textColor="#F9D16B"
-        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/button_menu"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        android:layout_marginTop="30dp"
+        >
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:id="@+id/textview_title_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/google_sans_text_bold"
+            android:text="DEMO"
+            android:textColor="#F9D16B"
+            android:textSize="22sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_demo_info"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cornerRadius="180dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#F9D16B"
+            app:icon="@drawable/ic_question_mark"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconTint="@color/black"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <VideoView
         android:layout_marginTop="20dp"
         android:id="@+id/video_view_one"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:layout_constraintTop_toBottomOf="@id/textview_title_one"
+        app:layout_constraintTop_toBottomOf="@id/layout_demo"
         />
 
-    <TextView
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/textview_title_two"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_modes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Display Modes"
-        android:textColor="#F9D16B"
-        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/video_view_one"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        >
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:id="@+id/textview_title_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DISPLAY MODES"
+            android:textColor="#F9D16B"
+            android:textSize="22sp"
+            android:fontFamily="@font/google_sans_text_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_modes_info"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cornerRadius="180dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#F9D16B"
+            app:icon="@drawable/ic_question_mark"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconTint="@color/black"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_modes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/layout_modes"
         />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_refresh_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/recyclerview_modes"
+        android:layout_marginTop="30dp"
+        >
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:id="@+id/textview_title_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WHAT IS REFRESH RATE?"
+            android:fontFamily="@font/google_sans_text_bold"
+            android:textColor="#F9D16B"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_refresh_rate_info"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cornerRadius="180dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#F9D16B"
+            app:icon="@drawable/ic_question_mark"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconTint="@color/black"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
-        android:id="@+id/textview_modes"
+        android:id="@+id/textview_refresh_rate_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/google_sans_text"
+        android:paddingHorizontal="10dp"
+        android:text="
+        Displays aren’t static. Content and motion appear smooth on your phone’s screen because every pixel constantly updates to display the latest content from your handset’s processor. But this doesn’t happen randomly. Panels update their content at regular intervals, known as the refresh rate.\n
+        The refresh rate measures the period of time between a phone’s display updates. In other words, how often and quickly the content on the screen refreshes. Measured in Hertz (Hz), the refresh rate counts the number of times the display fully refreshes every second.\n
+        A 60Hz display refreshes 60 times per second, 90Hz is 90 times per second, 120Hz is 120 times per second, and so on. So a 120Hz display refreshes twice as fast as a 60Hz panel and 4x faster than 30Hz."
         android:textColor="#F9D16B"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/textview_title_two"
+        app:layout_constraintTop_toBottomOf="@id/layout_refresh_rate"
         app:layout_constraintStart_toStartOf="parent"
         />
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
