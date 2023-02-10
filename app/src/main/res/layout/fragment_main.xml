@@ -227,19 +227,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:layout_marginStart="10dp"
+        android:background="@drawable/bg_item_mode"
+        android:paddingHorizontal="14dp"
         android:layout_marginTop="30dp"
         android:id="@+id/textview_refresh_rate_info"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/google_sans_text"
-        android:paddingHorizontal="10dp"
-        android:text="
-        Displays aren’t static. Content and motion appear smooth on your phone’s screen because every pixel constantly updates to display the latest content from your handset’s processor. But this doesn’t happen randomly. Panels update their content at regular intervals, known as the refresh rate.\n
-        The refresh rate measures the period of time between a phone’s display updates. In other words, how often and quickly the content on the screen refreshes. Measured in Hertz (Hz), the refresh rate counts the number of times the display fully refreshes every second.\n
-        A 60Hz display refreshes 60 times per second, 90Hz is 90 times per second, 120Hz is 120 times per second, and so on. So a 120Hz display refreshes twice as fast as a 60Hz panel and 4x faster than 30Hz."
-        android:textColor="#F9D16B"
-        android:textSize="20sp"
+        android:text="Refresh rate is defined as how often your screen can display an image per second and is measured in hertz (Hz)."
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/layout_refresh_rate"
         app:layout_constraintStart_toStartOf="parent"
         />
