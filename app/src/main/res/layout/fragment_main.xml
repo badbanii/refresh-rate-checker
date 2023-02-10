@@ -104,7 +104,7 @@
             android:fontFamily="@font/google_sans_text_bold"
             android:text="DEMO"
             android:textColor="#F9D16B"
-            android:textSize="22sp"
+            android:textSize="20sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:text="DISPLAY MODES"
             android:textColor="#F9D16B"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:fontFamily="@font/google_sans_text_bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -177,10 +177,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="20dp"
         android:id="@+id/recyclerview_modes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/layout_modes"
+        app:layout_constraintTop_toBottomOf="@id/layout_modes"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_display_mode"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout

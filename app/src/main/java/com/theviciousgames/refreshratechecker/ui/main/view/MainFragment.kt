@@ -12,6 +12,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.theviciousgames.refreshratechecker.databinding.FragmentMainBinding
 import com.theviciousgames.refreshratechecker.databinding.FragmentOnboardingBinding
 import com.theviciousgames.refreshratechecker.ui.main.viewmodel.MainViewModel
@@ -22,6 +23,7 @@ import kotlin.concurrent.fixedRateTimer
 class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fragment_main) {
     private var _binding: FragmentMainBinding? = null
     private val viewModel: MainViewModel by viewModels()
+    private lateinit var modeAdapter: ModeAdapter
     private val binding: FragmentMainBinding
         get() = _binding!!
 
@@ -45,6 +47,19 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMainBinding.bind(view)
         updateUi()
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView()
+    {
+        modeAdapter= ModeAdapter()
+        with(binding)
+        {
+            recyclerviewModes.apply {
+                adapter=modeAdapter
+                layoutManager=LinearLayoutManager(activity)
+            }
+        }
     }
     ///adb shell dumpsys display | grep -i "displaymoderecord" | grep -i "fps"
 }
