@@ -68,6 +68,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         binding.textviewRefreshRate.text=getRefreshRate().toString()
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun buttonFunctions()
     {
         with(binding){
