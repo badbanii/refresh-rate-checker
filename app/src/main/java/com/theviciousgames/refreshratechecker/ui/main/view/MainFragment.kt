@@ -1,14 +1,9 @@
 package com.theviciousgames.refreshratechecker.ui.main.view
 
-import android.R
-import android.media.AudioAttributes
+import android.media.PlaybackParams
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.SystemClock
-import android.util.Log
 import android.view.Display
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -19,11 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.maxkeppeler.sheets.core.SheetStyle
 import com.maxkeppeler.sheets.info.InfoSheet
 import com.theviciousgames.refreshratechecker.databinding.FragmentMainBinding
-import com.theviciousgames.refreshratechecker.databinding.FragmentOnboardingBinding
 import com.theviciousgames.refreshratechecker.ui.main.viewmodel.MainViewModel
 import com.theviciousgames.refreshratechecker.ui.utils.Destination
-import com.theviciousgames.refreshratechecker.ui.welcome.viewmodel.OnBoardingViewModel
-import kotlin.concurrent.fixedRateTimer
 
 
 class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fragment_main) {
@@ -49,7 +41,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
                 Uri.parse("android.resource://" + "com.theviciousgames.refreshratechecker" + "/" + com.theviciousgames.refreshratechecker.R.raw.test)
             videoViewOne.setVideoURI(uri)
             videoViewOne.start()
-            videoViewOne.setOnPreparedListener { mp -> mp.isLooping = true }
+            videoViewOne.setOnPreparedListener { mp -> mp.isLooping = true}
         }
     }
 
@@ -132,6 +124,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
                     findNavController().navigate(com.theviciousgames.refreshratechecker.R.id.action_mainFragment_to_settingsFragment)
                 }
             }
+
             else -> {}
         }
     }

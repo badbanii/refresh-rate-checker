@@ -56,6 +56,12 @@ class MenuFragment: Fragment(R.layout.fragment_menu) {
             buttonRate.setOnClickListener {
                 showRatingDialog()
             }
+            buttonIap.setOnClickListener {
+                navigateTo(Destination.IAP)
+            }
+            layoutIap.setOnClickListener {
+                navigateTo(Destination.IAP)
+            }
         }
     }
 
@@ -86,6 +92,12 @@ class MenuFragment: Fragment(R.layout.fragment_menu) {
                 if (findNavController().currentDestination?.id == com.theviciousgames.refreshratechecker.R.id.menuFragment)
                 {
                     findNavController().navigateUp()
+                }
+            }
+            Destination.IAP->{
+                if (findNavController().currentDestination?.id == com.theviciousgames.refreshratechecker.R.id.menuFragment)
+                {
+                    findNavController().navigate(com.theviciousgames.refreshratechecker.R.id.action_menuFragment_to_iapFragment)
                 }
             }
             else -> {}

@@ -29,13 +29,13 @@ class ThirdOnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
     private fun updateUi() {
         with(binding)
         {
-            animationView.visibility = View.VISIBLE
+            lottieView.visibility = View.VISIBLE
             textviewTitle.text = "Our website is waiting for you!"
             textviewDescription.text =
                 "www.aBetterAndroid.com\nIf you're curious enough\n\uD83E\uDD14"
-            animationView.setAnimation(R.raw.lottie_website)
-            animationView.scaleType = ImageView.ScaleType.CENTER_CROP
-            //buttonMoreApps.visibility = View.INVISIBLE
+            lottieView.setAnimation(R.raw.lottie_website)
+            lottieView.scaleType = ImageView.ScaleType.CENTER_CROP
+            buttonApps.visibility = View.INVISIBLE
         }
     }
 

@@ -53,6 +53,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/upper_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -139,6 +140,60 @@
             android:textSize="20sp"
             android:fontFamily="@font/google_sans_text_bold"
             />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_iap"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toBottomOf="@id/upper_layout"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_item_mode"
+        >
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_iap"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="10dp"
+            app:cornerRadius="180dp"
+            android:backgroundTint="#F9D16B"
+            app:icon="@drawable/ic_ads"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconTint="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/textview_iap_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/button_iap"
+            app:layout_constraintTop_toTopOf="@id/button_iap"
+            android:layout_marginStart="10dp"
+            android:text="Tired of ads?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/google_sans_text_bold"
+            />
+
+        <TextView
+            android:id="@+id/textview_iap_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/button_iap"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textview_iap_title"
+            android:layout_marginTop="6dp"
+            android:text="Get rid of them by supporting aBetterAndroid\nso we can continue our developing journey."
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:fontFamily="@font/google_sans_text_bold"
+            />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

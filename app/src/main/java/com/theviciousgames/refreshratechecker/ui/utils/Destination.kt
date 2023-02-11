@@ -7,5 +7,6 @@ enum class Destination {
     Main(),
     Settings(),
     Menu(),
-    Back()
+    Back(),
+    IAP()
 }
