@@ -1,14 +1,9 @@
 package com.theviciousgames.refreshratechecker.ui.main.view
 
-import android.R
-import android.media.AudioAttributes
+import android.media.PlaybackParams
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.SystemClock
-import android.util.Log
 import android.view.Display
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -19,11 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.maxkeppeler.sheets.core.SheetStyle
 import com.maxkeppeler.sheets.info.InfoSheet
 import com.theviciousgames.refreshratechecker.databinding.FragmentMainBinding
-import com.theviciousgames.refreshratechecker.databinding.FragmentOnboardingBinding
 import com.theviciousgames.refreshratechecker.ui.main.viewmodel.MainViewModel
 import com.theviciousgames.refreshratechecker.ui.utils.Destination
-import com.theviciousgames.refreshratechecker.ui.welcome.viewmodel.OnBoardingViewModel
-import kotlin.concurrent.fixedRateTimer
 
 
 class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fragment_main) {
@@ -31,6 +23,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
     private val viewModel: MainViewModel by viewModels()
     private lateinit var modeAdapter: ModeAdapter
     private var dialog: InfoSheet = InfoSheet()
+    private var currentRefreshRate=0
     private val binding: FragmentMainBinding
         get() = _binding!!
 
@@ -48,7 +41,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
                 Uri.parse("android.resource://" + "com.theviciousgames.refreshratechecker" + "/" + com.theviciousgames.refreshratechecker.R.raw.test)
             videoViewOne.setVideoURI(uri)
             videoViewOne.start()
-            videoViewOne.setOnPreparedListener { mp -> mp.isLooping = true }
+            videoViewOne.setOnPreparedListener { mp -> mp.isLooping = true}
         }
     }
 
@@ -61,6 +54,13 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
         setupRecyclerView()
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun refresh()
+    {
+        binding.textviewRefreshRate.text=getRefreshRate().toString()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun buttonFunctions()
     {
         with(binding){
@@ -75,6 +75,9 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
             }
             buttonRefreshRateInfo.setOnClickListener {
                 showDialogDefinition()
+            }
+            buttonRefresh.setOnClickListener {
+                refresh()
             }
         }
     }
@@ -103,7 +106,6 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
     private fun getRefreshRate(): Int{
         return viewModel.getRefreshRate(requireActivity())
     }
-    ///adb shell dumpsys display | grep -i "displaymoderecord" | grep -i "fps"
 
     private fun navigateTo(destination: Destination)
     {
@@ -122,6 +124,7 @@ class MainFragment : Fragment(com.theviciousgames.refreshratechecker.R.layout.fr
                     findNavController().navigate(com.theviciousgames.refreshratechecker.R.id.action_mainFragment_to_settingsFragment)
                 }
             }
+
             else -> {}
         }
     }

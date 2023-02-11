@@ -1,25 +1,22 @@
 package com.theviciousgames.refreshratechecker.ui.welcome.view
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.CreateMethod
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.theviciousgames.refreshratechecker.R
 import com.theviciousgames.refreshratechecker.databinding.FragmentOnboardingBinding
 import com.theviciousgames.refreshratechecker.ui.utils.Destination
 import com.theviciousgames.refreshratechecker.ui.welcome.viewmodel.OnBoardingViewModel
 
 class FirstOnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
-    private var _binding: FragmentOnboardingBinding? = null
+    private val binding by viewBinding(FragmentOnboardingBinding::bind)
     private val viewModel: OnBoardingViewModel by viewModels()
-    private val binding: FragmentOnboardingBinding
-        get() = _binding!!
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
 
     private fun navigateToMainIfUserIsOld()
     {
@@ -32,10 +29,10 @@ class FirstOnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
         navigateToMainIfUserIsOld()
         with(binding)
         {
-            animationView.cancelAnimation()
-            textviewTitle.text = "Check your refresh!"
+            lottieView.cancelAnimation()
+            textviewTitle.text = "Refresh rate matters!"
             textviewDescription.text =
-                "You either want to be a great gamer with a better aim or you simply want a zoomed-out screen and you came to the right place!\n Lets us know in a review what's your opinion!"
+                "Your device's refresh rate is important. A smooth UI provides a better user experience. Playing games at a higher refresh rate can have a substantial impact on your gaming experience. This is especially relevant with fast-paced, competitive games where every frame counts.\nLets us know in a review what's your opinion!"
         }
     }
 
@@ -59,10 +56,8 @@ class FirstOnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
                 else -> {}
             }
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentOnboardingBinding.bind(view)
         updateUi()
         buttonFunction()
     }

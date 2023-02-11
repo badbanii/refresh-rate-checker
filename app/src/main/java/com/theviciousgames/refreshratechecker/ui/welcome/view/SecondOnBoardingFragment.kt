@@ -1,5 +1,7 @@
 package com.theviciousgames.refreshratechecker.ui.welcome.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -42,11 +44,11 @@ class SecondOnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
         {
             textviewTitle.text = "Check out our other apps!"
             textviewDescription.text =
-                "Are you looking to change your resolution? Check your device's HDR version?\nVisit us by pressing 'more'!\naBetterAndroid has everything you need."
-            animationView.visibility = View.VISIBLE
-            animationView.setAnimation(R.raw.lottie_more)
-            animationView.scaleType = ImageView.ScaleType.CENTER_CROP
-           // buttonMoreApps.visibility = View.VISIBLE
+                "Are you looking to change your resolution? Your DPI? Check your device's HDR version?\nVisit us by pressing 'more'!\naBetterAndroid has everything you need."
+            lottieView.visibility = View.VISIBLE
+            lottieView.setAnimation(R.raw.lottie_more)
+            lottieView.scaleType = ImageView.ScaleType.CENTER_CROP
+            buttonApps.visibility = View.VISIBLE
         }
     }
 
@@ -64,6 +66,19 @@ class SecondOnBoardingFragment : Fragment(R.layout.fragment_onboarding) {
             buttonNext.setOnClickListener {
                 navigateTo(Destination.ThirdOnBoarding)
             }
+            buttonApps.setOnClickListener {
+                openPlayStoreProfile()
+            }
         }
+    }
+
+    private fun openPlayStoreProfile()
+    {
+        startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://play.google.com/store/apps/dev?id=8049005269403185530")
+            )
+        )
     }
 }
